@@ -2,8 +2,8 @@ var canvas = document.querySelector('canvas');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-let pos_x = window.innerWidth/2;
-let pos_y = window.innerHeight/2;
+let pos_x = window.innerWidth / 2;
+let pos_y = window.innerHeight / 2;
 let radius = 50
 
 let ctx = canvas.getContext('2d');
@@ -12,11 +12,11 @@ ctx.beginPath();
 ctx.arc(pos_x, pos_y, radius, 0, 2 * Math.PI);
 ctx.stroke();
 
-let num_lines = 10;
+let num_lines = 1;
 
 let total = 2 * Math.PI;
 
-let each_line_degree = total/num_lines;
+let each_line_degree = total / num_lines;
 
 let start_line_x = 0;
 let start_line_y = 0;
@@ -50,8 +50,9 @@ let i = 0
 function animate() {
     requestAnimationFrame(animate);
     ctx.clearRect(0, 0, innerWidth, innerHeight);
+    num_lines += 1;
     each_line_degree = total / num_lines;
-    
+
     while (i < num_lines) {
         line_radians = i * each_line_degree;
         pos_info = calcXandY(pos_x, pos_y, radius, line_radians);
